@@ -17,8 +17,7 @@ def extraire_id_fichier (filename):
     try :
         with open(filename,"r") as file :
             # Récupération du doc XML
-            
-            #return data
+
             doc_xml = xml.dom.minidom.parse(file)
             root = doc_xml.documentElement
 
