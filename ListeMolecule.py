@@ -23,7 +23,7 @@ class ListeMolecule :
         
     # Ecriture dans un fichier
     def print_in_file ( self ) :
-        filename = "Resultats\\" + self.nom + "_" + datetime.now().strftime("%Y_%m_%d_%Hh%M") + ".txt"
+        filename = "Resultats/" + self.nom + "_" + datetime.now().strftime("%Y_%m_%d_%Hh%M") + ".txt"
         file = open(filename, "x")
         file.write ( str ( self ) )
         file.close()
