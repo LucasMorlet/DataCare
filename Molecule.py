@@ -1,5 +1,6 @@
 class Molecule :
 
+
     # Constructeur
     def __init__ ( self ) :
         self.nom = None
