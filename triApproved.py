@@ -27,6 +27,7 @@ def traiter_doc_txt(filename):
         return -1
  
 def traiter_fichier_unique_approved(filename):
+    
     try :
         path_lecture= dossier_lecture + caractere_de_separation + filename+".xml"
         with open(path_lecture,"r") as file :
@@ -35,18 +36,14 @@ def traiter_fichier_unique_approved(filename):
             root = doc_xml.documentElement
 
             group = root.getElementsByTagName("group")
-            #print ( "On a", len (group), "element :" )
             result=[]
             # parcours le tag "group"
             for i in range( len( group ) ):
                 result.append(group[i].firstChild.nodeValue)
-            print (result)
             for i in range (len(result)) :
                 elem=result[i]
-                print ("elelel",elem)
                 if elem =="approved":
-                    copie_fichiers(file)
-                    print("je copie le fichier")
+                    copie_fichiers(filename)
 
             
     except :
@@ -56,23 +53,26 @@ def traiter_fichier_unique_approved(filename):
 
 def juge_fichiers(filename):
     liste_identifiants=traiter_doc_txt(filename)
-    print(liste_identifiants)
     for i in range(len(liste_identifiants)):
         traiter_fichier_unique_approved(liste_identifiants[i])
 
 def copie_fichiers(nomDepart):
-    path_ecriture= dossier_ecriture + caractere_de_separation + nomDepart
-    path_lecture= dossier_lecture + caractere_de_separation + nomDepart
+    path_ecriture= dossier_ecriture + caractere_de_separation + nomDepart + ".xml"
+    path_lecture= dossier_lecture + caractere_de_separation + nomDepart + ".xml"
 
-    with open( path_ecriture, 'x' ) as fileArrive:
-        with open (path_lecture,'r') as fichierDepart:
-            continu=True
-            while (continu):
-                ligne=file.readline()
-                if ligne :
-                    fileArrive.write(ligne)
-                else:
-                    continu = False
+    try :
+        with open( path_ecriture, 'x' ) as fileArrive:
+            with open ( path_lecture,'r' ) as fichierDepart:
+                continu=True
+                while (continu):
+                    ligne = fichierDepart.readline()
+                    if ligne :
+                        fileArrive.write(ligne)
+                    else:
+                        continu = False
+    except :
+        print ( "Le fichier d'arrivée n'est aps bon" )
+        return -1
             
 
         
