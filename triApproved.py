@@ -51,8 +51,14 @@ def traiter_fichier_unique_approved_commercial(filename):
                     break
                     
             # Commercial/Non Commercial
-            commercial = "commercial"
-            # TODO marketing ?
+
+            marketDebut = root.getElementsByTagName("started-marketing-on")
+            marketFin = root.getElementsByTagName("ended-marketing-on")
+   
+            if len(marketDebut)>0:
+                commercial="commercial"
+            else:
+                commercial="non-commercial"
 
             
             resultat = ""
@@ -71,6 +77,7 @@ def traiter_fichier_unique_approved_commercial(filename):
 def juge_fichiers(filename):
     liste_identifiants=traiter_doc_txt(filename)
     for i in range(len(liste_identifiants)):
+        print ( "\nMolécule",i+1,":\n")
         res = traiter_fichier_unique_approved_commercial(liste_identifiants[i])
         print ( res )
 
