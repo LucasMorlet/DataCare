@@ -34,4 +34,4 @@ def extraire_id_fichier (filename):
 def traite_fichier () :
     None
 
-print(traite_dossier ("test.xml"))
+print(extraire_id_fichier ("database-100.xml"))
