@@ -75,18 +75,6 @@ def traiter_fichier_unique_approved_commercial(filename):
         else :  print("\n\n[ERROR!] Attention, le fichier {} n'existe pas\n\n".format(filename))
         return -1
 
-def juge_fichiers(filename):
-    csv = create_csv ( filename )
-    if csv == None :
-        return
-    liste_identifiants=traiter_doc_txt(filename)
-    for i in range(len(liste_identifiants)):
-        print ( "\nMolécule",i+1,":\n")
-        res = traiter_fichier_unique_approved_commercial(liste_identifiants[i])
-        write_in_csv ( res, csv )
-        
-    print ( extract_from_csv ( csv, True, False, False, True, True ) )
-
 def copie_fichiers(nomDepart):
     path_ecriture= dossier_ecriture + caractere_de_separation + nomDepart + ".xml"
     path_lecture= dossier_lecture + caractere_de_separation + nomDepart + ".xml"
@@ -161,8 +149,14 @@ def extract_from_csv ( csv, app, unk, oth, com, notcom ) :
     except :
         print ( "Fail : Impossible de lire dans", csv )
     return data
+    
+def transforme_csv ( filename ):
+    csv = create_csv ( filename )
+    if csv == None :
+        return
+    liste_identifiants=traiter_doc_txt(filename)
+    for i in range(len(liste_identifiants)):
+        res = traiter_fichier_unique_approved_commercial(liste_identifiants[i])
+        write_in_csv ( res, csv )
         
-
-#traiter_fichier_unique_approved("database-100.xml")
-#traiter_doc_txt("identifiant.txt")
-juge_fichiers("identifiant.txt")
+    return csv
