@@ -5,7 +5,10 @@ import xml.etree.ElementTree as ET
 
 char_de_separation = '\\'
 
+
 dossier_ecriture = "DataBase\\Rename"
+
+
 dossier_lecture = "DataBase"
 
 def traiter_dossier_complet () :
@@ -62,4 +65,6 @@ def copier_fichier ( nom, fichier_a_copier ) :
     
     
 # Main
+
 traiter_dossier_complet()
+
