@@ -72,11 +72,11 @@ bouton1 = Checkbutton(fenetre, text="Approved", var=app)
 bouton1.place(x=600, y=250)
  
 # checkbutton 2 Unknow
-bouton2 = Checkbutton(fenetre, text="Unknow", var=unk)
+bouton2 = Checkbutton(fenetre, text="Undefined", var=unk)
 bouton2.place(x=600, y=300)
  
 # checkbutton 3 All Others
-bouton3 = Checkbutton(fenetre, text="All Others", var=oth)
+bouton3 = Checkbutton(fenetre, text="Not approved", var=oth)
 bouton3.place(x=600, y=350)
  
 # checkbutton 4 Commercial
